@@ -7,10 +7,23 @@ module.exports = {
   entry: {},
   module: {
     loaders: [
-       { test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: 'ng-annotate!babel' },
-       { test: /\.html$/, loader: 'raw' },
-       { test: /\.styl$/, loader: 'style!css!stylus' },
-       { test: /\.css$/, loader: 'style!css' }
+       { test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loaders: ['ng-annotate-loader', 'babel-loader']},
+       { test: /\.html$/, loader: 'raw-loader' },
+       { test: /\.css$/, loaders: ['style-loader', 'css-loader']},
+       {
+         test: /\.(sass|scss)$/,
+         loaders: [
+           'css-to-string-loader',
+           'css-loader',
+           'resolve-url-loader',
+           'sass-loader'
+         ]
+       },
+       {
+         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+         loader: 'url-loader?limit=10000&minetype=application/font-woff'
+       },
+       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' },
     ]
   },
   plugins: [
@@ -30,6 +43,14 @@ module.exports = {
       minChunks: function (module, count) {
         return module.resource && module.resource.indexOf(path.resolve(__dirname, 'client')) === -1;
       }
-    })
+    }),
+
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.ProvidePlugin({
+      'Tether': 'tether',
+      'window.Tether': 'tether',
+    }),
+    new webpack.LoaderOptionsPlugin({}),
   ]
 };

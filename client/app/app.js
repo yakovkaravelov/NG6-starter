@@ -1,3 +1,5 @@
+import 'tether';
+import 'bootstrap-loader';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import Common from './common/common';
