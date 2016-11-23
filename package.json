@@ -1,10 +1,11 @@
 {
-  "name": "ng6-starter",
+  "name": "mendel-dev",
   "version": "0.0.1",
-  "description": "Starter for Angular + ES6 + (Webpack or JSPM)",
+  "description": "MendelX Medical Clinic",
   "main": "index.js",
   "dependencies": {
     "angular": "^1.5.0",
+    "angular-ui-bootstrap": "^2.2.0",
     "angular-ui-router": "^1.0.0-beta.1",
     "babel-loader": "^6.2.8",
     "bootstrap-loader": "^2.0.0-beta.15",
@@ -74,13 +75,14 @@
   "keywords": [
     "angular",
     "webpack",
-    "es6"
+    "es6",
+    "bootstrap"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/angularclass/NG6-starter.git"
+    "url": "ssh://git@bitbucket.org/mendelappdevelopers/mendel-health-view-application-v2.git"
   },
-  "author": "AngularClass",
+  "author": "Yakov Karavelov",
   "license": "Apache-2.0",
   "babel": {
     "plugins": [

@@ -45,10 +45,5 @@ describe('About', () => {
       template = $compile('<about></about>')(scope);
       scope.$apply();
     });
-
-    it('has name in template', () => {
-      expect(template.find('h1').html()).to.eq('about');
-    });
-
   });
 });

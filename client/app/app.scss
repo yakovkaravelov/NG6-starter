@@ -1,9 +1,7 @@
-@import './common/hero/hero';
 @import './common/navbar/navbar';
 @import './components/about/about';
 @import './components/home/home';
 
 .app {
   height: 100%;
-  background-color: $lightBgColor;
 }

@@ -1,14 +1,14 @@
 import angular from 'angular';
 import Navbar from './navbar/navbar';
-import Hero from './hero/hero';
 import User from './user/user';
+import Bot from './bot/bot';
 
 let commonModule = angular.module('app.common', [
   Navbar,
-  Hero,
-  User
+  User,
+  Bot,
 ])
-  
+
 .name;
 
 export default commonModule;

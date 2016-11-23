@@ -5,11 +5,15 @@ let UserFactory = function () {
     return user;
   };
 
-  let isSignedIn = () => {
-    return user.isSignedIn; 
+  let getUserSessionId = () => {
+    return user.sessionId;
   };
 
-  return { getUser, isSignedIn };
+  let isSignedIn = () => {
+    return user.isSignedIn;
+  };
+
+  return { getUser, getUserSessionId, isSignedIn };
 };
 
 export default UserFactory;

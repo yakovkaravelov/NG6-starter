@@ -1,9 +1,9 @@
-class HomeController {
-  constructor ($state, Bot) {
+class CancerTypeController {
+  constructor($state, Bot) {
     "ngInject";
 
-    this.name = 'home';
-    this.title = 'MendelX Medical Clinic';
+    this.name = 'cancerType';
+    this.title = 'Tell me what kind of cancer do you have?';
     this.$state = $state;
     this.Bot = Bot;
     this.data = {
@@ -14,17 +14,17 @@ class HomeController {
   submitMedicalInput () {
     this.Bot.getMedicalData(this.data.medicalInput)
       .then((response) => {
-        if (response.nextStep === 1) {
-          this.$state.go('cancerType');
-        } else if (response.nextStep === 2) {
+        if (response.nextStep === 2) {
           this.$state.go('location');
+        } else if (response.nextStep === 3) {
+          this.$state.go('gender');
         }
       })
       .catch((err) => {
         console.log(err);
-        this.$state.go('cancerType');
+        this.$state.go('location');
       });
   }
 }
 
-export default HomeController;
+export default CancerTypeController;

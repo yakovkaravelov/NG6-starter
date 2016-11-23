@@ -1,9 +1,9 @@
-import NavbarModule from './navbar'
+import LocationModule from './location'
 
-describe('Navbar', () => {
+describe('Location', () => {
   let $rootScope, $state, $location, $componentController, $compile;
 
-  beforeEach(window.module(NavbarModule));
+  beforeEach(window.module(LocationModule));
 
   beforeEach(inject(($injector) => {
     $rootScope = $injector.get('$rootScope');
@@ -15,13 +15,18 @@ describe('Navbar', () => {
 
   describe('Module', () => {
     // top-level specs: i.e., routes, injection, naming
+    it('location component should be here', () => {
+      $location.url('/location');
+      $rootScope.$digest();
+      expect($state.current.component).to.eq('location');
+    });
   });
 
   describe('Controller', () => {
     // controller specs
     let controller;
     beforeEach(() => {
-      controller = $componentController('navbar', {
+      controller = $componentController('location', {
         $scope: $rootScope.$new()
       });
     });
@@ -37,7 +42,7 @@ describe('Navbar', () => {
 
     beforeEach(() => {
       scope = $rootScope.$new();
-      template = $compile('<navbar></navbar>')(scope);
+      template = $compile('<location></location>')(scope);
       scope.$apply();
     });
   });

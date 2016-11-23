@@ -1,9 +1,9 @@
-import NavbarModule from './navbar'
+import CancerTypeModule from './cancerType'
 
-describe('Navbar', () => {
+describe('CancerType', () => {
   let $rootScope, $state, $location, $componentController, $compile;
 
-  beforeEach(window.module(NavbarModule));
+  beforeEach(window.module(CancerTypeModule));
 
   beforeEach(inject(($injector) => {
     $rootScope = $injector.get('$rootScope');
@@ -15,13 +15,18 @@ describe('Navbar', () => {
 
   describe('Module', () => {
     // top-level specs: i.e., routes, injection, naming
+    it('cancerType component should be here', () => {
+      $location.url('/cancer-type');
+      $rootScope.$digest();
+      expect($state.current.component).to.eq('cancerType');
+    });
   });
 
   describe('Controller', () => {
     // controller specs
     let controller;
     beforeEach(() => {
-      controller = $componentController('navbar', {
+      controller = $componentController('cancerType', {
         $scope: $rootScope.$new()
       });
     });
@@ -37,7 +42,7 @@ describe('Navbar', () => {
 
     beforeEach(() => {
       scope = $rootScope.$new();
-      template = $compile('<navbar></navbar>')(scope);
+      template = $compile('<cancerType></cancerType>')(scope);
       scope.$apply();
     });
   });
